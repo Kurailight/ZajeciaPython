@@ -1,0 +1,4 @@
+testsrod/
+__pycache__/
+.vscode/
+*.pyc
