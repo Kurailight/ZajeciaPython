@@ -1,0 +1,42 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #201515;
+    color: #473be6;
+}
+
+nav a {
+    margin-right: 10px;
+    text-decoration: none;
+    color: #007BFF;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+h1 {
+    color: #2c0ab5;
+}
+
+form input[type="text"] {
+    padding: 5px;
+    width: 200px;
+}
+
+form input[type="submit"] {
+    padding: 5px 10px;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+li {
+    padding: 10px 0;
+}
+
+del {
+    color: rgb(128, 128, 128);
+}

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Lista zadań{% endblock %}
+{% block content %}
+<h1>Lista Zadań</h1>
+
+<form method="post">
+    <input type="text" name="task" placeholder="Wpisz nowe zadanie">
+    <input type="submit" value="Dodaj">
+</form>
+
+<ul>
+    {% for task in tasks %}
+        <li>
+            {% if task.done %}
+                <del>{{ task.text }}</del>
+            {% else %}
+                {{ task.text }}
+                <a href="{{ url_for('mark_done', task_id=task.id) }}">V</a>
+            {% endif %}
+            <a href="{{ url_for('delete_task', task_id=task.id) }}">X</a>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}
