@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traker wydatków</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+ 
+</head>
+<body>
+    <header>
+        <div class="logo-title">
+            <img src="/static/images/logo.png" alt="Traker wydatków" class="logo">
+            <span class="app-name">Traker wydatków</span>
+        </div>
+        
+        <nav class="nav-bar">
+            <div class="nav-links">
+                <a href="{{ url_for('index') }}">Dashboard</a>
+                <a href="{{ url_for('add_expense') }}">Dodaj wydatek</a>
+                
+                {% if current_user.is_authenticated %}
+                    <a href="{{ url_for('logout') }}">Wyloguj się</a>
+                {% else %}
+                    <a href="{{ url_for('login') }}">Zaloguj się</a>
+                    <a href="{{ url_for('register') }}">Zarejestruj się</a>
+                {% endif %}
+            </div>
+
+        </nav>
+    </header>
+    
+    <main>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for category, message in messages %}
+                        <div class="flash {{ category }}" 
+                        style="text-align: center; margin: 0 auto; max-width: 600px;">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </main>
+
+    <script>
+      setTimeout(() => {
+        document.querySelectorAll('.flash').forEach(el => {
+          el.style.display = 'none';
+        });
+      }, 1500); 
+    </script>
+
+    {% block scripts %}{% endblock %}
+</body>
+</html>

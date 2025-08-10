@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Dashboard</h2>
+
+<!-- filtrowanie po kategorii -->
+<div class="filter-wrapper">
+  <label for="categoryFilter">Filtruj według kategorii:</label>
+  <select id="categoryFilter">
+      <option value="all">Wszystkie</option>
+      <option value="Jedzenie">Jedzenie</option>
+      <option value="Transport">Transport</option>
+      <option value="Rozrywka">Rozrywka</option>
+      <option value="Ubrania">Ubrania</option>
+      <option value="Paliwo">Paliwo</option>
+      <option value="Uroda">Uroda</option>
+      <option value="Czynsz">Czynsz</option>
+      <option value="Inne">Inne</option>
+  </select>
+</div>
+
+
+<!-- tabela wydatków -->
+<table>
+    <thead>
+        <tr>
+            <th class="sortable"><span>Opis</span> <span class="sort-icon" id="sort-icon-0"></span></th>
+            <th class="sortable"><span>Kategoria</span> <span class="sort-icon" id="sort-icon-1"></span></th>
+            <th class="sortable"><span>Kwota (zl)</span> <span class="sort-icon" id="sort-icon-2"></span></th>
+            <th class="sortable"><span>Data</span> <span class="sort-icon" id="sort-icon-3"></span></th>
+            <th>Akcje</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for expense in expenses %}
+        <tr>
+            <td>{{ expense.description }}</td>
+            <td>{{ expense.category }}</td>
+            <td>{{ expense.amount }}</td>
+            <td>{{ expense.date }}</td>
+            <td class="actions-cell">
+                <a href="{{ url_for('edit_expense', expense_id=expense.id) }}" class="action-button action-link">Edytuj</a>
+                <form action="{{ url_for('delete_expense', expense_id=expense.id) }}" method="POST">
+                    <button type="submit" class="action-button delete-btn">Usuń</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<!-- suma wydatków -->
+<div id="total">
+    <h3>Wydatki: <span id="totalAmount">0.00</span> zł</h3>
+</div>
+
+<div id="custom-confirm" class="modal hidden">
+  <div class="modal-content">
+    <p>Na pewno usunąć?</p>
+    <button id="confirm-yes">Tak</button>
+    <button id="confirm-no">Nie</button>
+  </div>
+</div>
+
+
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+{% endblock %}

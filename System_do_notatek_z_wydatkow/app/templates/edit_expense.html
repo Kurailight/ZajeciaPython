@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Edytuj</h2>
+
+<form method="POST">
+    <input type="number" step="0.01" name="amount" value="{{ expense.amount }}" required>
+    <input type="text" name="description" value="{{ expense.description }}" required>
+    <select name="category" required>
+        <option value="Jedzenie" {% if expense.category == 'Jedzenie' %}selected{% endif %}>Jedzenie</option>
+        <option value="Transport" {% if expense.category == 'Transport' %}selected{% endif %}>Transport</option>
+        <option value="Rozrywka" {% if expense.category == 'Rozrywka' %}selected{% endif %}>Rozrywka</option>
+        <option value="Ubrania" {% if expense.category == 'Ubrania' %}selected{% endif %}>Ubrania</option>
+        <option value="Paliwo" {% if expense.category == 'Paliwo' %}selected{% endif %}>Paliwo</option>
+        <option value="Uroda" {% if expense.category == 'Uroda' %}selected{% endif %}>Uroda</option>
+        <option value="Czynsz" {% if expense.category == 'Czynsz' %}selected{% endif %}>Czynsz</option>
+        <option value="Inne" {% if expense.category == 'Inne' %}selected{% endif %}>Inne</option>
+    </select>
+    <input type="date" name="date" value="{{ expense.date }}" required>
+    <button type="submit">Zapisz</button>
+</form>
+{% endblock %}
