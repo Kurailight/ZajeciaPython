@@ -1,0 +1,17 @@
+venv/
+virt_env/
+
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+*.db
+
+instance/
+.env
+
+.vscode/
+.idea/
+
+*.log
