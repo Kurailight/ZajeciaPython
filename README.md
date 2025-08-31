@@ -9,24 +9,24 @@ Projekt to aplikacja webowa napisana w Pythonie oparta o framework Flask, służ
 1. Klonowanie repozytorium                                                              
 git clone https://github.com/Kurailight/ZajeciaPython.git                                                     
 cd ZajeciaPython                                                         
-2. Utworzenie i aktywacja środowiska wirtualnego
-python -m venv virtenv                                                                             
+2. Utworzenie i aktywacja środowiska wirtualnego                                                                
+python -m venv virtenv                                                                                                                                              
 Windows: virtenv\Scripts\activate
 3. Instalacja zależności                                                                   
 pip install -r requirements.txt                                                  
-4. Ustawienie zmiennych środowiskowych w cmd 
-set FLASK_APP=run.py                                                      
-set SECRET_KEY=klucz                                                                    
+4. Ustawienie zmiennych środowiskowych w cmd                                                                
+set FLASK_APP=run.py                                                                                                               
+set SECRET_KEY=klucz                                                                                                                                   
 5. Uruchomienie aplikacji                                                           
 flask run
 
 **Zbudowanie i uruchomienie obrazu Dockera:**
-1. Klonowanie repozytorium
-git clone https://github.com/Kurailight/ZajeciaPython.git
-cd ZajeciaPython
-2. Budowanie obrazu Dockera
-docker build -t system-do-notatek-z-wydatkow .
-3. Uruchomienie kontenera
-docker run -d -p 5000:5000 system-do-notatek-z-wydatkow
-4. Dostęp do aplikacji
+1. Klonowanie repozytorium                                                                        
+git clone https://github.com/Kurailight/ZajeciaPython.git                                              
+cd ZajeciaPython                                                            
+2. Budowanie obrazu Dockera                                                           
+docker build -t system-do-notatek-z-wydatkow .                                                                
+3. Uruchomienie kontenera                                                           
+docker run -d -p 5000:5000 system-do-notatek-z-wydatkow                                                                   
+4. Dostęp do aplikacji                                                                
 http://localhost:5000
